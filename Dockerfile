@@ -1,18 +1,19 @@
-# Use Python slim image
 FROM python:3.10-slim
+
+# Install git and any required build dependencies
+RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
 WORKDIR /app
 
-# Copy and install requirements
+# Copy requirements
 COPY app/requirements.txt ./requirements.txt
+
+# Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy source code
-COPY app/ ./app/
+# Copy app code
+COPY app/ .
 
-# Expose Gradio port
-EXPOSE 7860
-
-# Run the app
-CMD ["python", "./app/main.py"]
+# Default command
+CMD ["python", "app.py"]
