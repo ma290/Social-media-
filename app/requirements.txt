@@ -1,7 +1,8 @@
-fastapi==0.95.1
-uvicorn[standard]==0.22.0
-transformers==4.35.2
-torch==2.1.0
-whisper @ git+https://github.com/openai/whisper.git
-gradio==3.34.0
-requests
+git+https://github.com/openai/whisper.git
+openai
+pydub
+gradio
+transformers
+torch
+scipy
+sentence-transformers
