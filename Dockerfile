@@ -1,19 +1,20 @@
+# Base image
 FROM python:3.10-slim
-
-# Install git and any required build dependencies
-RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
 WORKDIR /app
 
 # Copy requirements
-COPY app/requirements.txt ./requirements.txt
+COPY requirements.txt .
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy app code
-COPY app/ .
+# Copy all app files
+COPY . .
 
-# Default command
-CMD ["python", "app.py"]
+# Expose port for Gradio
+EXPOSE 8000
+
+# Run the app (replace app.py with your file if named differently)
+CMD ["python", "main.py"]
