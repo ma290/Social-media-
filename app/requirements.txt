@@ -1,8 +1,2 @@
-git+https://github.com/openai/whisper.git
-openai
-pydub
-gradio
-transformers
-torch
-scipy
-sentence-transformers
+gradio==4.24.0
+requests
